@@ -30,7 +30,7 @@ class StoreFront{
             authBtn.textContent = 'Logout';
             authBtn.addEventListener('click', () => {
                 localStorage.removeItem('loggedInUser');
-                window.location.href = '../index.html';
+                window.location.href = '../html/index.html';
             });
         }
         if (document.getElementById('formSignIn')) {
@@ -50,7 +50,7 @@ class StoreFront{
             this.setupDashboard();
         }
         if (document.querySelector('[data-genre="Fiction"]')){
-            await this.setupBooks();
+            this.setupBooks();
         }   
         if (document.querySelector('.book-detail-title')) {
             this.setupBookPage();
@@ -188,7 +188,7 @@ class StoreFront{
 
     //book methods. 
 
-    async setupBooks(){
+    setupBooks(){
         const books = this.database.getJsonFiles('books');
         const fictionBooks = books.filter(book => book.genre === 'Fiction');
         const fictionShelf = document.querySelector('[data-genre="Fiction"]');
